@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <malloc.h>
 
 struct noh{
 
@@ -8,29 +9,32 @@ struct noh{
     struct noh* prox;
 };
 
-void imprimirPilha(struct noh * inicio){
-    if(inicio!=NULL)
-    {
-        struct noh * aux;
-        aux=inicio;
+void imprimirPilha(struct noh ** inicio){
 
-        printf("--");
+    if((*inicio)!=NULL){
+        printf("Imprimindo \n");
+
+        struct noh * aux;
+        aux=*inicio;
+
+        printf("--\n");
+
         while(aux!=NULL){
             printf("%d \n",aux->valor);
             aux=aux->prox;
         }
-        printf("--");
+        printf("--\n");
     }
 
 
 
 }
 
-struct noh * alocarNovoNoh(int valor){
+struct noh * alocarNovoNoh(int val){
     struct noh * novoNoh;
 
     novoNoh = (struct noh *)malloc(sizeof (struct noh));
-    novoNoh->valor= valor;
+    novoNoh->valor= val;
     novoNoh->prox=NULL;
 
     return novoNoh;
@@ -38,45 +42,43 @@ struct noh * alocarNovoNoh(int valor){
 
 }
 
-void empilhar(struct noh * inicio, int valor, int *tamanho){
+void empilhar(struct noh ** inicio, int valor, int *tamanho){
 
     struct noh * novoNoh;
     novoNoh = alocarNovoNoh(valor);
 
 
-    if(inicio==NULL){
+    if((*inicio)==NULL){
 
-        inicio=novoNoh;
+        (*inicio)=novoNoh;
         (*tamanho)=1;
 
     }
 
-    if(inicio!=NULL){
+    else{
 
-        novoNoh->prox=inicio;
-        inicio=novoNoh;
+        novoNoh->prox=(*inicio);
+        (*inicio)=novoNoh;
         (*tamanho)++;
 
     }
 
 
 
-
-
 }
 
-int topo(struct noh* inicio){
+int topo(struct noh** inicio){
     if(inicio!=NULL)
-    return  inicio->valor;
+    return  (*inicio)->valor;
 
     return -1;
 }
 
-int desempilhar(struct noh* inicio, int *tamanho){
-    if(inicio!=NULL){
+int desempilhar(struct noh** inicio, int *tamanho){
+    if((*inicio)!=NULL){
     struct noh * aux;
-    aux=inicio;
-    inicio=inicio->prox;
+    aux=(*inicio);
+    *inicio=(*inicio)->prox;
 
     free(aux);
     (*tamanho)--;
@@ -86,7 +88,7 @@ int desempilhar(struct noh* inicio, int *tamanho){
     }
 
 
-    }
+}
 
 
 
@@ -95,12 +97,14 @@ int main()
     int tamanho;
     struct noh *inicio=NULL;
 
-   empilhar(inicio,2,&tamanho);
-   empilhar(inicio,3,&tamanho);
-   //empilhar(inicio,4,&tamanho);
-   //empilhar(inicio,5,&tamanho);
-   //empilhar(inicio,6,&tamanho);
-  // desempilhar(inicio,&tamanho);
-   printf("%d\n",tamanho);
-   imprimirPilha(inicio);
+   empilhar(&inicio,2,&tamanho);
+   printf("%d\n",inicio);
+   empilhar(&inicio,3,&tamanho);
+   empilhar(&inicio,4,&tamanho);
+   empilhar(&inicio,5,&tamanho);
+   empilhar(&inicio,6,&tamanho);
+   desempilhar(&inicio,&tamanho);
+   //printf("%d\n",tamanho);
+   imprimirPilha(&inicio);
+   return 0;
 }

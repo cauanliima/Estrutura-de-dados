@@ -61,7 +61,9 @@ void exibirPilha()
 void exibirPilhaNew()
 {
 
-    for(int i=tamanho-1;i>=0;i--)
+    //for(int i=tamanho-1;i>=0;i--)
+    for(int i=0;i>=tamanho-1;i--)
+
     { if(pilha[i]==0)
             printf("correct\n");
 
