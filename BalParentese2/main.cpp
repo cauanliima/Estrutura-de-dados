@@ -61,8 +61,8 @@ void exibirPilha()
 void exibirPilhaNew()
 {
 
-    for(int i=tamanho-1;i>=0;i--)
-    //for(int i=0;i>=tamanho-1;i--)
+    //for(int i=tamanho-1;i>=0;i--)
+    for(int i=0;i>=tamanho-1;i--)
 
     { if(pilha[i]==0)
             printf("correct\n");
@@ -87,13 +87,11 @@ int main(){
     int N,j=0,cont=0;
     char texto[1000];
 
-    cout<<"Digite o numero de expressoes: ";
-    cin>>N;
-    inicializar(N);
+   // cin>>N;
+    inicializar(1000);
 
-for(int i=0;i<N;i++){
-cout<<"Expressao n.: "<<i+1<<":";
-cin.ignore();
+do{
+//cin.ignore();
 cin>>texto;
 
 while(texto[j]!='\0'){
@@ -113,7 +111,8 @@ while(texto[j]!='\0'){
 
     cont=0;
     j=0;
-}
+
+} while(texto[0]!='\0');
 
 exibirPilhaNew();
 
