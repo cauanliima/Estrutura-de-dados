@@ -87,12 +87,12 @@ int main(){
     int N,j=0,cont=0;
     char texto[1000];
 
-    cout<<"Digite o numero de expressoes: ";
+  //  cout<<"Digite o numero de expressoes: ";
     cin>>N;
     inicializar(N);
 
 for(int i=0;i<N;i++){
-cout<<"Expressao n.: "<<i+1<<":";
+//cout<<"Expressao n.: "<<i+1<<":";
 cin.ignore();
 cin>>texto;
 
