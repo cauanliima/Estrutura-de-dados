@@ -1,0 +1,5 @@
+﻿  pch.cpp
+C:\Users\cauan\Documents\Github\Estrutura-de-dados\Cod Com Testes\ArrayStack\pch.h(8,10): fatal error C1083: Não é possível abrir arquivo incluir: 'gtest/gtest.h': No such file or directory
+  ArrayStack.cpp
+C:\Users\cauan\Documents\Github\Estrutura-de-dados\Cod Com Testes\ArrayStack\ArrayStack\ArrayStack.cpp(1,10): fatal error C1083: Não é possível abrir arquivo incluir: 'pch.h': No such file or directory
+  Gerando Código...
